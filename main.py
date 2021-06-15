@@ -4,6 +4,8 @@ import numpy as np
 
 # ========================================
 # define the length of password
+length = ""
+
 while True:
     length_input = input("The length of the password you need:")
     if not length_input.isnumeric():
@@ -18,45 +20,64 @@ while True:
 # chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
 
 A = np.array([0, 0, 0, 0])
+chars2 = ""
 
-ans0 = input("Uppercase, Yes or No:")
-if ans0 == "Yes":
-    A[0] = 1
-elif ans0 == "No":
-    A[0] = 0
+while True:
+    ans0 = input("Uppercase, Y/N:")
+    if ans0 == "Y":
+       chars2 += string.ascii_uppercase
+       break
+    elif ans0 == "N":
+       chars2 = chars2
+       break
+    else:
+        print("Please enter Y/N!")
+    continue
+
+
+while True:
+    ans1 = input("Lowercase, Y/N:")
+    if ans1 == "Y":
+       chars2 += string.ascii_lowercase
+       break
+    elif ans1 == "N":
+       chars2 = chars2
+       break
+    else:
+        print("Please enter Y/N!")
+    continue
+
+while True:
+    ans2 = input("Number, Y/N:")
+    if ans2 == "Y":
+       chars2 += string.digits
+       break
+    elif ans2 == "N":
+       chars2 = chars2
+       break
+    else:
+        print("Please enter Y/N!")
+    continue
+
+while True:
+    ans3 = input("Symbol, Y/N:")
+    if ans3 == "Y":
+       chars2 += string.punctuation
+       break
+    elif ans3 == "N":
+       chars2 = chars2
+       break
+    else:
+        print("Please enter Y/N!")
+    continue
+
+if chars2 == "":
+    print("You need to choose one to say yes!")
 else:
-    print("Please enter Yes or No:")
+    chars1 = "".join(chars2)
+    temp = random.sample(chars1, length)
+    password = "".join(temp)
+    print(f"Password: {password}")
 
-ans1 = input("Lowercase, Yes or No:")
-if ans1 == "Yes":
-    A[1] = 1
-elif ans1 == "No":
-    A[1] = 0
-else:
-    print("Please enter Yes or No:")
 
-ans2 = input("Number, Yes or No:")
-if ans2 == "Yes":
-    A[2] = 1
-elif ans2 == "No":
-    A[2] = 0
-else:
-    print("Please enter Yes or No:")
 
-ans3 = input("Lowercase, Yes or No:")
-if ans3 == "Yes":
-    A[3] = 1
-elif ans3 == "No":
-    A[3] = 0
-else:
-    print("Please enter Yes or No:")
-
-# ========================================
-# use random
-temp = random.sample(chars, length)
-
-# ========================================
-# create password
-password = "".join(temp)
-
-print(f"Password: {password}")
