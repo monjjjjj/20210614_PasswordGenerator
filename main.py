@@ -22,14 +22,10 @@ def check_source(source_name):
             print("Please enter Y/N!")
 
 
-
-# ========================================
 # define the length of password
 length = get_length()
 
-# ========================================
 # define source of the password
-# chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
 chars2 = ""
 
 # 三元判斷式
@@ -41,7 +37,6 @@ chars2 += string.punctuation if check_source("Symbol") else ''
 if chars2 == "":
     print("You need to choose one to say yes!")
 else:
-    chars = "".join(chars2)
-    temp = random.sample(chars, length)
+    temp = ''.join(random.choice(chars2) for _ in range(length))
     password = "".join(temp)
     print(f"Password: {password}")
